@@ -1,0 +1,142 @@
+@import url("https://fonts.googleapis.com/css2?family=Alkatra:wght@400;600;700&family=Dancing+Script:wght@400;600;700&family=Montserrat:wght@300;400;600;700&display=swap");
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+:root {
+  --primary-hue: 210;
+  --gray-hue: 240;
+  --color-primary: hsl(var(--primary-hue), 100%, 50%);
+  --color-primary-variant: hsl(var(--primary-hue), 100%, 65%);
+  --color-secondary: #ffb116;
+  --color-gray-100: hsl(var(var(--gray-hue), 47%, 94%) %);
+  --color-gray-200: hsl(var(var(--gray-hue), 26%, 75%) %);
+  --color-gray-300: hsl(var(var(--gray-hue), 24%, 64%) %);
+  --color-gray-400: hsl(var(var(--gray-hue), 16%, 41%) %);
+  --color-gray-500: hsl(var(var(--gray-hue), 44%, 25%) %);
+  --color-gray-600: hsl(var(var(--gray-hue), 48%, 15%) %);
+
+  --container-width-lg: 80%;
+  --container-width-md: 90%;
+  --transition: all 500ms ease;
+}
+body {
+  font-family: "Montserrat", sans-serif;
+  color: var(--color-gray-200);
+  line-height: 1.7;
+  overflow-x: hidden;
+  background: var(--color-gray-600);
+}
+
+.container {
+  width:var(--container-width-lg);
+  max-width: 1920px;
+  margin-inline: auto;
+}
+
+
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  h1,h2,h3,h4,h5,h6 {
+    @apply leading-3 text-gray-800
+  }
+  h1{
+    @apply text-[4rem]
+  }
+  h2{
+    @apply text-[3rem]
+  }
+  h3{
+    @apply text-[2rem]
+  }
+  h4{
+    @apply text-[1rem]
+  }
+  h5{
+    @apply text-[0.8rem]
+  }
+  h6{
+    @apply text-[0.5rem]
+  }
+ p{
+  @apply font-dancing leading-4 font-semibold text-2xl
+ }
+}
+
+@layer components {
+  .nav {
+    @apply h-[5rem] w-screen grid content-center fixed top-0 left-0 z-50 
+  }
+  .nav_container {
+    @apply h-full flex justify-between items-center relative shadow-xl
+  }
+  .logo{
+    @apply w-[3.5rem] 
+  }
+  .logo img {
+    @apply rounded-full
+  }
+  .nav_links{
+    @apply flex items-center gap-[3.5rem]
+  }
+  .active-nav{
+    @apply relative z-50
+  }
+  .active-nav::after {
+    @apply content-[''] block w-[1.2rem] h-[1.2rem] bg-red-500 absolute left-[calc(50%-0.6rem)] mt-[0.9rem] rotate-45
+  }
+
+  .main_header{
+    @apply w-full h-full grid place-content-center mt-[3rem]
+  }
+  .main_header_container{
+    @apply grid grid-cols-2 items-center justify-center gap-8
+  }
+  .main_header_left{
+    @apply mt-[-3rem] font-medium
+  }
+  .main_header_left h4 {
+    @apply mt-[1rem]
+  }
+  .main_header_left p{
+    @apply mt-[1rem] mr-0 ml-[3rem]
+  }
+  .btn {
+    @apply py-[0.9rem] px-[2rem] rounded-md max-w-fit bg-rose-600
+  }
+}
+
+
+/* media screen */
+
+@media screen and (max-width:1024px){
+  .nav_toggle-btn{
+    @apply inline-block bg-transparent cursor-pointer
+  }
+  .nav_links{
+    @apply absolute top-[100%] right-0 flex flex-col gap-0
+  }
+  .active-nav , .active-nav::after{
+    @apply hidden
+  }
+  .nav_links li {
+    @apply h-[4rem] w-full shadow-xl
+  }
+  .nav_links li a {
+    @apply h-full w-full flex items-center pt-[1rem] pr-[rem] pb-[1rem] pl-[3rem]
+  }
+
+  /* this is hamberger */
+  .show-nav{
+    @apply flex 
+  }
+  .hide-nav{
+    @apply hidden
+  }
+}
